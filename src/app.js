@@ -18,9 +18,9 @@ exports.readFile = (path, callback) => {
 };
 
 
-exports.writeFile = (fileName, cleanBuffer, callback) => {
+exports.writeFile = (file, buffer, callback) => {
 
-  fs.writeFile(fileName, cleanBuffer, (err, data) => {
+  fs.writeFile(file, buffer, (err,data) => {
     if(err) {
       callback(err);
     }

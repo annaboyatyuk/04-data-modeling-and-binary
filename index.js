@@ -1,8 +1,8 @@
 'use strict';
 
-const fileAccess = require('./src/app.js');
+const fileAccess = require('./src/app.js');//?
 const fileTransform = require('./src/lib/transformation.js');
-const bitMapper = require('./src/lib/bitmap.js');
+const BufferData = require('./src/lib/bitmap.js');
 
 const root = __dirname;
 
@@ -16,23 +16,25 @@ fileAccess.readFile(`${root}/assets/bitmap.bmp`, (err, data) => {
   }
   else {
 
-    testing = bitMapper(data);
+    console.log('sjdfjioewjofjwoeia',data);
 
-    var changeColor = fileTransform.transform(testing);
+    // testing = new BufferData(data);
 
-    fileAccess.writeFile(`${root}/assets/new.bmp`, changeColor.buffer, (err) => {
+    // var changeColor = fileTransform.transform(testing);
+
+    fileAccess.writeFile(`${root}/assets/new.bmp`, data, (err) => {
       if(err){
         throw err;
       }
       else{
-        console.log('new file createddddd');
+        // console.log('new file createddddd', changeColor);
       }
     });
   }
-  console.log('first', testing);
+  console.log('first');
 });
 
-console.log('second', testing);
+console.log('second');
 
 
 

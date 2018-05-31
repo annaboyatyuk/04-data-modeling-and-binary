@@ -1,7 +1,7 @@
 'use strict';
 
 let bitReader = require('../src/app.js');
-let bitMapper = require('../src/lib/bitmap');
+let BufferData = require('../src/lib/bitmap');
 // let transformer = require('../src/lib/transformation');
 // let index = require('../index');
 
@@ -19,11 +19,11 @@ describe('Bitmap reader', () => {
 
 
   it(' should call on buffer when given a valid file path', (done) => {
-    let filePath = 'assets/bitmap.bmp';
-    bitReader.readFile(filePath, (err, buffer) => {
+    let filePath = 'assets/bitmap.bmp';//?
+    bitReader.readFile(filePath, (err, buffer) => {//?
       expect(err).toBeNull();
       expect(typeof buffer).toBe('object');
-      // console.log(buffer);
+      console.log(buffer.length);//?
       done();
     });
   });
@@ -41,11 +41,12 @@ describe('Bitmap reader', () => {
 
 
   it(' should show an object with the correct dimensions', (done) => {
-    let filePath = 'assets/bitmap.bmp';
+    let filePath = __dirname + '/../assets/bitmap.bmp';
     bitReader.readFile(filePath, (err, buffer) => {
-      let results = bitMapper(buffer);
-      console.log('table', results.colorPalette.length);
+      expect(err).toBeNull();
+      let results = new BufferData(buffer);
       // console.log(results.colorPalette);
+      console.log('table', results.colorPalette.length);//?
       expect(results.width).toBe(100);
       expect(results.height).toBe(100);
       done();
