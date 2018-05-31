@@ -44,7 +44,8 @@ describe('Bitmap reader', () => {
     let filePath = 'assets/bitmap.bmp';
     bitReader.readFile(filePath, (err, buffer) => {
       let results = bitMapper(buffer);
-      console.log(results);
+      console.log('table', results.colorPalette.length);
+      // console.log(results.colorPalette);
       expect(results.width).toBe(100);
       expect(results.height).toBe(100);
       done();
