@@ -4,37 +4,39 @@ const fileAccess = require('./src/app.js');//?
 const fileTransform = require('./src/lib/transformation.js');
 const BufferData = require('./src/lib/bitmap.js');
 
-const root = __dirname;
 
-console.log('dir name is', __dirname);
+
+let originalFile = process.argv[2] || 'bitmap.bmp';
+let newFile = process.argv[3] || 'new.bmp';
+// let transformation = process.argv[4] || 'invert';
+
+
 
 var testing ;
 
-fileAccess.readFile(`${root}/assets/bitmap.bmp`, (err, data) => {
+fileAccess.readFile(`${__dirname}/assets/${originalFile}`, (err, data) => {
   if(err) {
     throw err;
   }
   else {
 
-    console.log('sjdfjioewjofjwoeia',data);
 
-    // testing = new BufferData(data);
+    testing = new BufferData(data);
 
-    // var changeColor = fileTransform.transform(testing);
+    fileTransform.transform(testing);
 
-    fileAccess.writeFile(`${root}/assets/new.bmp`, data, (err) => {
+
+    fileAccess.writeFile(`${__dirname}/assets/${newFile}`, data, (err) => {
       if(err){
         throw err;
       }
       else{
-        // console.log('new file createddddd', changeColor);
+        console.log('new file createddddd');
       }
     });
   }
-  console.log('first');
 });
 
-console.log('second');
 
 
 

@@ -4,35 +4,38 @@
 
 module.exports = exports = {};
 
-// exports.transform = (buffer) => {
-
-//   let colorPalette = buffer.colorPalette;
-
-//   for(let i = 0; i < colorPalette.length; i++) {
-
-//     colorPalette[i] = 0x0;
-
-//   }
-//   return(buffer);
-
-// }
 
 
 exports.transform = (buffer) => {//?
 
-  let pixelArray = buffer.pixelArray;//?
+  let raster = buffer.raster;
 
-  for(let i = 0; i < pixelArray.length; i++) {
-    // console.log('......', pixelArray[i]);
-    pixelArray[i] = 0x0;
-
+  for(let i = 0; i < raster.length; i+=3) {
+    raster[i] = 0x00;
+    // raster[i + 1] = 0x96;
+    // raster[i + 2] = 0x0;
   }
-  // console.log('buff', buffer);
-  // console.log('jaslijfeiofjioejf', pixelArray);
-  // console.log('2387493847938938',Buffer(buffer.colorPalette));
-  return buffer.pixelArray;
+  return(buffer);
 
 };
+  
+// let pixelArray = buffer.pixelArray;//?
+// console.log('hhhhhhhhhh', pixelArray);
+
+// for(let i = 0; i < pixelArray.length; i+=2) {
+//   // console.log('......', pixelArray[i]);
+//   pixelArray[i] = 0x96;
+//   pixelArray[i + 1] = 0x96;
+//   pixelArray[i + 2] = 0xce;
+
+// }
+// console.log('tttttttttt', pixelArray);
+// console.log('BUFFER', buffer);
+// console.log('jaslijfeiofjioejf', pixelArray);
+// console.log('2387493847938938',Buffer(buffer.colorPalette));
+//   return (buffer);
+
+// };
 
 
 

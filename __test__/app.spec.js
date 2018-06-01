@@ -41,12 +41,12 @@ describe('Bitmap reader', () => {
 
 
   it(' should show an object with the correct dimensions', (done) => {
-    let filePath = __dirname + '/../assets/bitmap.bmp';
+    let filePath = __dirname + '/../assets/bitmap.bmp';//?
     bitReader.readFile(filePath, (err, buffer) => {
       expect(err).toBeNull();
       let results = new BufferData(buffer);
       // console.log(results.colorPalette);
-      console.log('table', results.colorPalette.length);//?
+      // console.log('table', results.colorPalette.length);//?
       expect(results.width).toBe(100);
       expect(results.height).toBe(100);
       done();

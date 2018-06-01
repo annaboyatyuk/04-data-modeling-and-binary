@@ -2,6 +2,7 @@ module.exports = function () {
   return {
     files: [
       'src/**/*.js',
+      'src/*.js',
       '!__test__/**/*.spec.js',
       'index.js',
     ],

@@ -40,8 +40,8 @@ const HEIGHT_OFFSET = 22;
 const BYTES_PER_PIXEL_OFFSET = 28;
 const NUM_COLORS_OFFSET = 46;
 const COLOR_TABLE_OFFSET = 54;
-const COLOR_TABLE_LENGTH = 1078;
-const PIXEL_ARRAY_OFFSET = COLOR_TABLE_LENGTH;
+// const COLOR_TABLE_LENGTH = 1078;
+// const PIXEL_ARRAY_OFFSET = COLOR_TABLE_LENGTH;
 
 
 class BufferData {
@@ -54,9 +54,11 @@ class BufferData {
     this.height = bufferData.readInt32LE(HEIGHT_OFFSET);
     this.width = bufferData.readInt32LE(WIDTH_OFFSET);
     this.numColors = bufferData.readInt32LE(NUM_COLORS_OFFSET);
-    this.colorPalette = bufferData.slice(COLOR_TABLE_OFFSET, COLOR_TABLE_LENGTH);
-    this.pixelArray = bufferData.slice(PIXEL_ARRAY_OFFSET);
-    this.length = bufferData.length;
+    this.colorTable = bufferData.slice(COLOR_TABLE_OFFSET, this.numColors * 4);
+    this.raster = bufferData.slice(COLOR_TABLE_OFFSET + this.colorTable.length);
+    // this.colorPalette = bufferData.slice(COLOR_TABLE_OFFSET, COLOR_TABLE_LENGTH);
+    // this.pixelArray = bufferData.slice(PIXEL_ARRAY_OFFSET);
+    // this.length = bufferData.length;
   }
 
 }
