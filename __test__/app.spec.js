@@ -30,7 +30,7 @@ describe('Bitmap reader', () => {
 
 
   it(' should call the first two chars of the buffer and they should be BM', (done) => {
-    let filePath = 'assets/bitmap.bmp';
+    let filePath = __dirname +'/../assets/bitmap.bmp';//?
     bitReader.readFile(filePath, (err, buffer) => {
       let actual = buffer.toString('utf-8', 0, 2);
       let expected = 'BM';
