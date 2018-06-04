@@ -23,9 +23,7 @@ class BufferData {
     this.numColors = bufferData.readInt32LE(NUM_COLORS_OFFSET);
     this.colorTable = bufferData.slice(COLOR_TABLE_OFFSET, this.numColors * 4);
     this.raster = bufferData.slice(COLOR_TABLE_OFFSET + this.colorTable.length);
-    // this.colorPalette = bufferData.slice(COLOR_TABLE_OFFSET, COLOR_TABLE_LENGTH);
     this.pixelArray = bufferData.slice(PIXEL_ARRAY_OFFSET);
-    // this.length = bufferData.length;
   }
 
 }
